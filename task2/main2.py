@@ -117,53 +117,6 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         self.pixmap = QPixmap(self.map_file)
         self.label.setPixmap(self.pixmap)
 
-    def keyPressEvent(self, event):
-        if event.key() == Qt.Key_PageDown:
-            self.delta = float(self.delta)
-            if self.delta < 16:
-                self.delta = str(self.delta * 2)
-                self.getImage(self.lon, self.lat, self.delta)
-                self.setImage()
-
-        elif event.key() == Qt.Key_PageUp:
-            self.delta = float(self.delta)
-            self.delta = str(float(self.delta) / 2)
-            self.getImage(self.lon, self.lat, self.delta)
-            self.setImage()
-
-        elif event.key() == Qt.Key_Up:
-            self.lat = float(self.lat)
-            self.lat += 0.5
-            self.lat = str(self.lat)
-
-            self.getImage(self.lon, self.lat, self.delta)
-            self.setImage()
-
-        elif event.key() == Qt.Key_Down:
-            self.lat = float(self.lat)
-            self.lat -= 0.5
-            self.lat = str(self.lat)
-
-            self.getImage(self.lon, self.lat, self.delta)
-            self.setImage()
-
-        elif event.key() == Qt.Key_Left:
-            self.lon = float(self.lon)
-            self.lon -= 0.5
-            self.lon = str(self.lon)
-
-            self.getImage(self.lon, self.lat, self.delta)
-            self.setImage()
-
-        elif event.key() == Qt.Key_Right:
-            self.lon = float(self.lon)
-            self.lon += 0.5
-            self.lon = str(self.lon)
-
-            self.getImage(self.lon, self.lat, self.delta)
-            self.setImage()
-
-
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     ex = MyWidget()
